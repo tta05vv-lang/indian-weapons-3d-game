@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Historic Weapons - 3D RPG Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container"></div>
+    <div id="hud-container"></div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="modal">
+        <div class="modal-content">
+            <h2>🎮 Indian Historic Weapons RPG</h2>
+            <p>Loading Game Assets...</p>
+        </div>
+    </div>
+
+    <!-- Main Menu -->
+    <div id="main-menu" class="modal">
+        <div class="modal-content">
+            <h1>⚔️ Indian Historic Weapons RPG</h1>
+            <p>Master ancient Indian weapons in epic battles</p>
+            <div class="menu-buttons">
+                <button onclick="game.startGameMode('adventure')" class="btn btn-primary">🗻 Adventure Mode</button>
+                <button onclick="game.startGameMode('pvp')" class="btn btn-primary">⚡ PvP Arena</button>
+                <button onclick="game.startGameMode('survival')" class="btn btn-primary">🌙 Survival Mode</button>
+                <button onclick="showCharacterCreation()" class="btn btn-secondary">👤 Create Character</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Character Creation -->
+    <div id="character-creation" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Create Your Warrior</h2>
+            <div class="creation-form">
+                <div class="form-group">
+                    <label>Character Name:</label>
+                    <input type="text" id="char-name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>Choose Profession:</label>
+                    <div class="profession-selector">
+                        <div class="profession-card" onclick="selectProfession('warrior')" data-profession="warrior">
+                            <h3>⚔️ Warrior</h3>
+                            <p>High damage</p>
+                        </div>
+                        <div class="profession-card" onclick="selectProfession('mage')" data-profession="mage">
+                            <h3>🔮 Mage</h3>
+                            <p>Spell power</p>
+                        </div>
+                        <div class="profession-card" onclick="selectProfession('rogue')" data-profession="rogue">
+                            <h3>🗡️ Rogue</h3>
+                            <p>Critical hits</p>
+                        </div>
+                        <div class="profession-card" onclick="selectProfession('paladin')" data-profession="paladin">
+                            <h3>🛡️ Paladin</h3>
+                            <p>Defense</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="createCharacter()" class="btn btn-primary">Create</button>
+                <button onclick="hideCharacterCreation()" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game HUD -->
+    <div id="game-hud" class="hud" style="display: none;">
+        <div class="hud-panel player-panel">
+            <h3 id="player-name">Player</h3>
+            <div class="stat-bar">
+                <span>HP:</span>
+                <div class="bar-container">
+                    <div id="hp-bar" class="bar hp-bar"></div>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span>Level: <span id="level">1</span></span>
+                </div>
+                <div class="stat-item">
+                    <span>Class: <span id="profession">Warrior</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hud-panel weapon-panel">
+            <h3>⚔️ Weapon</h3>
+            <h4 id="weapon-name">Talwar</h4>
+            <p id="weapon-desc">Ancient Indian sword</p>
+        </div>
+
+        <div class="hud-panel combat-log">
+            <h3>Combat Log</h3>
+            <div id="combat-messages" class="messages"></div>
+        </div>
+
+        <div class="hud-panel controls-panel">
+            <button onclick="game.playerAttack()" class="btn btn-attack">⚔️ Attack</button>
+            <button onclick="game.defendAction()" class="btn btn-defend">🛡️ Defend</button>
+            <button onclick="game.returnToMenu()" class="btn btn-secondary">Menu</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="weapons.js"></script>
+    <script src="player.js"></script>
+    <script src="combat.js"></script>
+    <script src="ui.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
