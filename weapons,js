@@ -1,0 +1,53 @@
+const WEAPONS = {
+    talwar: {
+        name: 'Talwar',
+        damage: 15,
+        critRate: 10,
+        rarity: 'common',
+        description: 'Ancient curved Indian sword used by Rajput warriors'
+    },
+    chakram: {
+        name: 'Chakram',
+        damage: 12,
+        critRate: 25,
+        rarity: 'uncommon',
+        description: 'Sacred discus weapon of Lord Krishna'
+    },
+    spear: {
+        name: 'Spear',
+        damage: 14,
+        critRate: 12,
+        rarity: 'common',
+        description: 'Long-range weapon of Indian soldiers'
+    },
+    khanjar: {
+        name: 'Khanjar',
+        damage: 10,
+        critRate: 35,
+        rarity: 'common',
+        description: 'Short curved dagger for quick strikes'
+    },
+    gadaa: {
+        name: 'Gadaa',
+        damage: 18,
+        critRate: 8,
+        rarity: 'uncommon',
+        description: 'Heavy mace favored by Bhima'
+    },
+    trishul: {
+        name: 'Trishul',
+        damage: 16,
+        critRate: 15,
+        rarity: 'rare',
+        description: 'Divine trident of Lord Shiva'
+    }
+};
+
+function getWeapon(id) {
+    return WEAPONS[id] || WEAPONS.talwar;
+}
+
+function getRandomWeapon() {
+    const keys = Object.keys(WEAPONS);
+    return keys[Math.floor(Math.random() * keys.length)];
+}
